@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Health Combinder</string>
     <string name="action_settings">Settings</string>
+    <string name="empty"></string>
+    <string name="profile">Profile</string>
+    <string name="change_password"><u>Change password</u></string>
+    <string name="sign_out">Sign Out</string>
+    <string name="history_checklist">Annual History Checklist</string>
+    <string name="email">Email</string>
 </resources>

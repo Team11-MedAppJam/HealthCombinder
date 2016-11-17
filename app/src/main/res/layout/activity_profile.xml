@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="team11.healthcombinder.Profile"
+    android:background="@color/colorPrimary">
+
+    <Button
+        android:text="@string/change_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText"
+        android:id="@+id/button3"
+        android:layout_alignStart="@+id/textView5"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
+
+    <TextView
+        android:text="@string/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:textAlignment="gravity"
+        android:gravity="start"
+        android:editable="false"
+        android:layout_toStartOf="@+id/editText" />
+
+    <TextView
+        android:text="DoB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:editable="false" />
+
+    <TextView
+        android:text="User Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:editable="false" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:editable="true"
+        android:lines="@android:integer/config_mediumAnimTime"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/history_checklist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_below="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button4"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="#ffffff" />
+
+    <ImageButton
+        app:srcCompat="?android:attr/homeAsUpIndicator"
+        android:id="@+id/imageButton2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/images"
+        android:id="@+id/imageButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/imageButton2"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
