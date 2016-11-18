@@ -21,6 +21,11 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import javax.xml.parsers.*;
+import org.w3c.dom.*;
+import java.io.StringReader;
+import org.xml.sax.InputSource;
+
 public class LoginActivity extends AppCompatActivity {
 
     /**
@@ -29,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     private GoogleApiClient client;
     private TextView textview;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         textview = new TextView(this);
         ViewGroup layout = (ViewGroup) findViewById(R.id.activity_login);
         layout.addView(textview);
+        intent = new Intent(this, Timeline.class);
     }
 
     public void loginButton(final View view) throws Exception {
@@ -77,9 +84,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
-        protected void onPostExecute(String result) {
-            textview.setText(result);
-
+        protected void onPostExecute(String result){
+            try {
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                Document doc = builder.parse(new InputSource(new StringReader(result)));
+                Element element = doc.getDocumentElement();
+                int id = Integer.parseInt(element.getTextContent());
+//                textview.setText(element.getTextContent());
+                if(id!=0)
+                {
+                    startActivity(intent);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
