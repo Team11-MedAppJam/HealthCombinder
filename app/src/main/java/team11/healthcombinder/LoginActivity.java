@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         ViewGroup layout = (ViewGroup) findViewById(R.id.activity_login);
         layout.addView(textview);
         intent = new Intent(this, Timeline.class);
+        startActivity(intent);
     }
 
     public void loginButton(final View view) throws Exception {

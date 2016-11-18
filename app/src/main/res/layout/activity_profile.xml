@@ -12,19 +12,6 @@
     tools:context="team11.healthcombinder.Profile"
     android:background="@color/colorPrimary">
 
-    <Button
-        android:text="@string/change_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:id="@+id/button3"
-        android:layout_alignStart="@+id/textView5"
-        android:background="@color/colorPrimary"
-        android:textColor="#ffffff"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textSize="16sp" />
-
     <TextView
         android:text="@string/email"
         android:layout_width="wrap_content"
@@ -67,31 +54,6 @@
         android:layout_centerHorizontal="true"
         android:editable="false" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:editable="true"
-        android:lines="@android:integer/config_mediumAnimTime"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="@string/history_checklist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:background="@color/colorPrimary"
-        android:textColor="#ffffff"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        android:layout_below="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:layout_alignParentEnd="true" />
-
     <Button
         android:text="@string/sign_out"
         android:layout_width="wrap_content"
@@ -103,19 +65,70 @@
         android:textColor="#ffffff" />
 
     <ImageButton
-        app:srcCompat="?android:attr/homeAsUpIndicator"
+        app:srcCompat="@drawable/backward"
         android:id="@+id/imageButton2"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/transparent"
         android:layout_width="70dp"
         android:layout_height="70dp" />
 
     <ImageButton
-        app:srcCompat="@drawable/images"
+        app:srcCompat="@drawable/profile_picture"
         android:id="@+id/imageButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_below="@+id/imageButton2"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/change_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/change_password"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_marginTop="13dp"
+        android:layout_alignEnd="@+id/textView2"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/forward"
+        android:id="@+id/imageView"
+        android:layout_alignTop="@+id/button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/button" />
+
+    <Button
+        android:text="@string/history_checklist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_below="@+id/change_password"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/change_password" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:editable="true"
+        android:lines="@android:integer/config_mediumAnimTime"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
