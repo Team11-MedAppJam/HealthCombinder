@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_history_checklist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:baselineAligned="false">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Allergies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textSize="24sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/toggleEdit"
+                android:background="@drawable/edit_text"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="sans-serif-medium"
+                android:layout_alignBottom="@+id/textView4"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:textOff=""
+                android:textOn=""
+                android:checked="false"/>
+
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Name"
+            android:ems="10"
+            android:paddingStart="@dimen/activity_vertical_margin"
+            android:focusable="false"
+            android:editable="false"
+            android:id="@+id/allergies_text" />
+
+        <TextView
+            android:text="Immunizations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9"
+            android:textSize="24sp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:layout_marginTop="21dp" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Name"
+            android:paddingStart="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:focusable="false"
+            android:id="@+id/immunizations_text" />
+
+        <TextView
+            android:text="Chronic Medical Allergies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView13"
+            android:textSize="24sp"
+            android:layout_marginTop="21dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Name"
+            android:paddingStart="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:focusable="false"
+            android:id="@+id/chron_med_all_text" />
+
+
+        <TextView
+            android:text="Current Treatment/Medication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView11"
+            android:layout_marginTop="21dp"
+            android:textSize="24sp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            />
+
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Name"
+            android:paddingStart="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:focusable="false"
+            android:id="@+id/treat_med_text" />
+
+        <TextView
+            android:text="Family History"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView15"
+            android:textSize="24sp"
+            android:layout_marginTop="21dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Name"
+            android:paddingStart="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:id="@+id/fam_his_text"
+            android:focusable="false"
+            />
+
+
+
+    </LinearLayout>
+
+</ScrollView>

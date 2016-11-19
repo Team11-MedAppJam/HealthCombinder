@@ -1,5 +1,6 @@
 package team11.healthcombinder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.support.design.widget.FloatingActionButton;
@@ -67,4 +68,10 @@ public class Timeline extends AppCompatActivity {
      * which is packaged with this application.
      */
     public native String stringFromJNI();
+
+
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
 }
