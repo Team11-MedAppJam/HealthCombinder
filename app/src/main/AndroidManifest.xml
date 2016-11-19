@@ -34,6 +34,15 @@
 
         <activity
             android:name=".popup"
+            android:theme="@style/AppTheme.Popup" />
+        <activity
+            android:name=".annual_history_checklist"
+            android:label="@string/history_checklist"
+            android:parentActivityName=".Profile">
+
+        </activity>
+
+        <activity android:name=".change_email"
             android:theme="@style/AppTheme.Popup">
 
         </activity>
