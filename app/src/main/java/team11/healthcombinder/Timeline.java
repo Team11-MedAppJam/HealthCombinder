@@ -1,7 +1,9 @@
 package team11.healthcombinder;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +12,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Timeline extends AppCompatActivity {
 
@@ -31,13 +46,14 @@ public class Timeline extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            sendAddCard(view);
+                sendAddCard(view);
             }
         });
 
+        new NextPageTask().execute();
         // Example of a call to a native method
 //        TextView tv = (TextView) findViewById(R.id.sample_text);
- //       tv.setText(stringFromJNI());
+        //       tv.setText(stringFromJNI());
     }
 
     @Override
@@ -73,12 +89,47 @@ public class Timeline extends AppCompatActivity {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
-    public void sendIntentAbout(MenuItem view){
+
+    public void sendIntentAbout(MenuItem view) {
         Intent intent = new Intent(this, about.class);
         startActivity(intent);
     }
-    public void sendAddCard(View fab){
+
+    public void sendAddCard(View fab) {
         Intent intent = new Intent(this, addcard.class);
         startActivity(intent);
+    }
+
+    private class NextPageTask extends AsyncTask<String, Void, String> {
+        private int id;
+
+        protected String doInBackground(String... params) {
+            try {
+                URL url = new URL(Config.API_ROOT + "/Session");
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setDoOutput(true);
+                String message = "";
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputline;
+                while ((inputline = in.readLine()) != null)
+                    message += inputline;
+                return message;
+            } catch (Exception e) {
+                return e.toString();
+            }
+        }
+
+        protected void onPostExecute(String result) {
+            try {
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                Document doc = builder.parse(new InputSource(new StringReader(result)));
+                Element element = doc.getDocumentElement();
+                int id = Integer.parseInt(element.getTextContent());
+//                textview.setText(element.getTextContent());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
