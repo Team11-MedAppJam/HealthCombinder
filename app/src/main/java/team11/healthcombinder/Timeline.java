@@ -74,4 +74,8 @@ public class Timeline extends AppCompatActivity {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
+    public void sendIntentAbout(MenuItem view){
+        Intent intent = new Intent(this, about.class);
+        startActivity(intent);
+    }
 }
