@@ -31,8 +31,7 @@ public class Timeline extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            sendAddCard(view);
             }
         });
 
@@ -76,6 +75,10 @@ public class Timeline extends AppCompatActivity {
     }
     public void sendIntentAbout(MenuItem view){
         Intent intent = new Intent(this, about.class);
+        startActivity(intent);
+    }
+    public void sendAddCard(View fab){
+        Intent intent = new Intent(this, addcard.class);
         startActivity(intent);
     }
 }
