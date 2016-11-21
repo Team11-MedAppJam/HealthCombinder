@@ -79,43 +79,44 @@ public class Timeline extends AppCompatActivity {
         //Adding cards dynamically//
         ///////////////////////////
 
-        //Find timeline list
-        LinearLayout timelineCards = (LinearLayout) findViewById(R.id.timeline_notecards);
 
-        //Declare objects to iterate on
-        Context mContext = getApplicationContext();
-        CardView cardView = new CardView(mContext);
-        LinearLayout cardLinearLayout = new LinearLayout(mContext);
-        TextView cardHeader = new TextView(mContext);
-        TextView cardDescrip = new TextView(mContext);
-
-        //Converting dp to pixels
-        Resources r = getResources();
-        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, r.getDisplayMetrics());
-        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 275, r.getDisplayMetrics());
-        int radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
-
-        //Set cardView styles
-        LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(width, height, Gravity.CENTER);
-        cardView.setRadius(radius);
-        cardView.setLayoutParams(cardViewParams);
-
-        //Set cardLinearLayout styles
-        LinearLayout.LayoutParams cardLinearLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        cardLinearLayout.setOrientation(LinearLayout.VERTICAL);
-
-        //Set cardHeader styles
-        FrameLayout.LayoutParams cardHeaderParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        cardHeader.setHint("Test Title Card");
-
-        //Set cardDescrip styles
-        FrameLayout.LayoutParams cardDescParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        cardDescrip.setLayoutParams(cardDescParams);
 
         //Set ids, attach elements, then add to timeline
         for(int i = 0; i < 5; i++){
             //Rename ids for each card SORRY STEPHEN NOT DONE YET
+            //Find timeline list
+            LinearLayout timelineCards = (LinearLayout) findViewById(R.id.timeline_notecards);
 
+            //Declare objects to iterate on
+            Context mContext = getApplicationContext();
+            CardView cardView = new CardView(mContext);
+            LinearLayout cardLinearLayout = new LinearLayout(mContext);
+            TextView cardHeader = new TextView(mContext);
+            TextView cardDescrip = new TextView(mContext);
+
+            //Converting dp to pixels
+            Resources r = getResources();
+            int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, r.getDisplayMetrics());
+            int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 275, r.getDisplayMetrics());
+            int radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
+
+            //Set cardView styles
+            LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(width, height, Gravity.CENTER);
+            cardView.setRadius(radius);
+            cardView.setLayoutParams(cardViewParams);
+
+            //Set cardLinearLayout styles
+            LinearLayout.LayoutParams cardLinearLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            cardLinearLayout.setOrientation(LinearLayout.VERTICAL);
+
+            //Set cardHeader styles
+            FrameLayout.LayoutParams cardHeaderParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            cardHeader.setHint("Test Title Card");
+
+            //Set cardDescrip styles
+            FrameLayout.LayoutParams cardDescParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            cardDescrip.setLayoutParams(cardDescParams);
+            cardDescrip.setHint("Testing symptoms descriptions");
             //Attach Elements in Hierachy
             cardLinearLayout.addView(cardHeader);
             cardLinearLayout.addView(cardDescrip);
