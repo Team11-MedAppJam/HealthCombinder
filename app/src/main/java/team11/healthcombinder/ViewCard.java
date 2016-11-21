@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.content.Intent;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,6 +29,9 @@ public class ViewCard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         id = 1; // HARDCODED; PLEASE CHANGE
         setContentView(R.layout.activity_view_card);
+
+        Intent intent = getIntent();
+        id = Integer.parseInt(intent.getStringExtra("notecard_id"));
         new loadNotecardTask().execute();
 
     }
