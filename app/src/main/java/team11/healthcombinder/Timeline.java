@@ -99,8 +99,8 @@ public class Timeline extends AppCompatActivity {
 
             //STEPHEN LOOK HERE FOR NAMING CONVENTIONS
             //Whole card
-            cardHeader.setId(i+1);
-            cardDescrip.setId((i+1)*10);
+            cardHeader.setId(2*i + 1);
+            cardDescrip.setId(2*i + 2);
 
             //Set cardView styles
             LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(width, height);
