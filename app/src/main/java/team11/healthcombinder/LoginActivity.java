@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         intent = new Intent(this, Timeline.class);
-//        new NextPageTask().execute();
+        new NextPageTask().execute(); //Remove this line in app
     }
 
     public void loginButton(final View view) throws Exception {

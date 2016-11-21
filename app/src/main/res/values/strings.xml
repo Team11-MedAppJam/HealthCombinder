@@ -14,4 +14,7 @@
     <string name="questions_comments_or_concerns">Questions, Comments, or Concerns</string>
     <string name="description">Description:</string>
     <string name="enter_symptom">Enter Symptom</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

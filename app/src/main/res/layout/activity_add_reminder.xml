@@ -4,57 +4,98 @@
     android:id="@+id/activity_add_reminder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorPrimaryDark"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="team11.healthcombinder.add_reminder">
 
+    <TextView
+        android:text="Remind me of:"
+        android:textSize="28sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp"
+        android:id="@+id/textView10" />
+
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="To do..."
         android:ems="10"
-        android:layout_below="@+id/textView7"
+        android:layout_below="@+id/textView10"
         android:layout_alignParentStart="true"
         android:id="@+id/editText4"
         android:layout_alignParentEnd="true"
         android:textSize="24sp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="?android:attr/detailsElementBackground" />
+        android:hint="Appointment..." />
 
     <TextView
-        android:text="Remind me:"
+        android:text="Comment:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:id="@+id/textView7"
+        android:id="@+id/textView12"
         android:textSize="28sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="normal|bold"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="On:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView10"
-        android:textSize="28sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="normal|bold"
         android:layout_below="@+id/editText4"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="28dp" />
 
-    <DatePicker
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText4"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/textView12"
+        android:layout_alignParentStart="true"
+        android:id="@+id/editText5"
+        android:layout_alignParentEnd="true"
+        android:textSize="24sp"
+        android:hint="Ask questions or conern" />
+
+    <Button
+        android:text="Set Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText5"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="66dp"
+        android:id="@+id/setDate"
+        android:onClick="setDate"
+        android:background="@android:color/transparent"
+        android:layout_toStartOf="@+id/setTime" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/setDate"
+        android:layout_alignParentStart="true"
+        android:id="@+id/dateDisplay"
+        android:layout_alignEnd="@+id/setDate"
+        android:textSize="22sp"
+        android:textAlignment="center" />
+
+    <Button
+        android:text="Set Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/setTime"
+        android:layout_alignBaseline="@+id/setDate"
+        android:layout_alignBottom="@+id/setDate"
+        android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView10"
-        android:id="@+id/datePicker3" />
+        android:background="@android:color/transparent"
+        android:onClick="setTime"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/setTime"
+        android:id="@+id/timeDisplay"
+        android:layout_alignEnd="@+id/setTime"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        android:layout_toEndOf="@+id/setDate" />
 
 </RelativeLayout>
