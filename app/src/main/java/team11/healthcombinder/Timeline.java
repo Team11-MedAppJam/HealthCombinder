@@ -73,6 +73,53 @@ public class Timeline extends AppCompatActivity {
         //       tv.setText(stringFromJNI());
 
 
+<<<<<<< HEAD
+=======
+        /////////////////////////////
+        //Adding cards dynamically//
+        ///////////////////////////
+
+        //Converting dp to pixels
+        Resources r = getResources();
+        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, r.getDisplayMetrics());
+        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 275, r.getDisplayMetrics());
+        int radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
+
+        //Set ids, attach elements, then add to timeline
+        for(int i = 0; i < 5; i++){
+            //Find timeline list
+            LinearLayout timelineCards = (LinearLayout) findViewById(R.id.timeline_notecards);
+
+            //Declare objects to iterate on
+            Context mContext = getApplicationContext();
+            CardView cardView = new CardView(mContext);
+            LinearLayout cardLinearLayout = new LinearLayout(mContext);
+            TextView cardHeader = new TextView(mContext);
+            TextView cardDescrip = new TextView(mContext);
+
+            //STEPHEN LOOK HERE FOR NAMING CONVENTIONS
+            //Whole card
+            cardHeader.setId(2*i + 1);
+            cardDescrip.setId(2*i + 2);
+
+            //Set cardView styles
+            LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(width, height);
+            cardViewParams.gravity = Gravity.CENTER;
+            cardViewParams.setMargins(0, 0, 0, 10);
+            cardView.setRadius(radius);
+            cardView.setLayoutParams(cardViewParams);
+            cardView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    Intent intent = new Intent(Timeline.this, about.class);
+                    startActivity(intent);
+                }
+            });
+
+            //Set cardLinearLayout styles
+            LinearLayout.LayoutParams cardLinearLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            cardLinearLayout.setOrientation(LinearLayout.VERTICAL);
+>>>>>>> origin/master
 
 
 

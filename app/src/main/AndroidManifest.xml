@@ -57,6 +57,7 @@
         <activity
             android:name=".add_reminder"
             android:theme="@style/AppTheme.Popup" />
+        <activity android:name=".CreateAccount"></activity>
     </application>
 
 </manifest>
