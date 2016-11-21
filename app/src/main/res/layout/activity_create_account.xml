@@ -8,6 +8,218 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="team11.healthcombinder.CreateAccount">
+    tools:context="team11.healthcombinder.CreateAccount"
+    android:background="@color/colorPrimary">
 
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/save"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:text="Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Name"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginTop="18dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editName"
+                android:gravity="center"
+                android:hint="Enter Name"
+                android:textSize="18sp"
+                android:singleLine="false" />
+
+            <TextView
+                android:text="Date of Birth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Dob"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/editDob"
+                android:hint="Click here "
+                android:gravity="center"
+                android:textSize="18sp"
+                android:singleLine="false" />
+
+            <TextView
+                android:text="Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Email"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/editEmail"
+                android:hint="Enter Email"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:singleLine="false" />
+
+            <TextView
+                android:text="Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Password"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editPassword"
+                android:hint="Enter Password"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:singleLine="false" />
+
+            <TextView
+                android:text="Allergies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Allergies"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editAllergies"
+                android:hint="Enter Allergies here"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:singleLine="false" />
+
+            <TextView
+                android:text="Immunizations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Immunizations"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editImmunizations"
+                android:hint="Enter Immunizations here"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:singleLine="false" />
+
+            <TextView
+                android:text="Chronic Medical Allergies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/CMA"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editCMA"
+                android:hint="Enter Chronic Allergies here"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:singleLine="false" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Treatment"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editTreatment"
+                android:hint="Enter current treatment and medications"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:singleLine="false" />
+
+            <TextView
+                android:text="Family History"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/FamilyHistory"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editFamilyHistory"
+                android:hint="Enter Family History here"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:singleLine="false" />
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
