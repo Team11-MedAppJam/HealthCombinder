@@ -47,7 +47,21 @@
             android:name=".about"
             android:label="About"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ViewCard"></activity>
+        <activity
+            android:name=".ViewCard">
+
+        </activity>
+        <activity
+            android:name=".Reminder"
+            android:label="Reminder"
+            android:parentActivityName=".Timeline">
+
+        </activity>
+        <activity
+            android:name=".add_reminder"
+            android:theme="@style/AppTheme.Popup">
+
+        </activity>
     </application>
 
 </manifest>

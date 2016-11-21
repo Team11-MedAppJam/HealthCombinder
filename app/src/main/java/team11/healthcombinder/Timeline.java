@@ -26,6 +26,8 @@ import java.net.URL;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import static team11.healthcombinder.R.id.textView;
+
 public class Timeline extends AppCompatActivity {
 
     // Used to load the 'native-lib' library on application startup.
@@ -50,10 +52,12 @@ public class Timeline extends AppCompatActivity {
             }
         });
 
-        new NextPageTask().execute();
+        //new NextPageTask().execute();
         // Example of a call to a native method
 //        TextView tv = (TextView) findViewById(R.id.sample_text);
-        //       tv.setText(stringFromJNI());
+        //       tv.setTex
+        // t(stringFromJNI());
+        setnewText("something");
     }
 
     @Override
@@ -90,14 +94,27 @@ public class Timeline extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void sendIntentAbout(MenuItem view) {
+
+
+
+    public void sendIntentAbout(MenuItem view){
+
         Intent intent = new Intent(this, about.class);
         startActivity(intent);
     }
 
     public void sendAddCard(View fab) {
-        Intent intent = new Intent(this, addcard.class);
+        Intent intent = new Intent(this, addcard.class);}
+
+    public void toReminder(View v){
+        Intent intent  = new Intent(this, Reminder.class);
         startActivity(intent);
+    }
+
+    public void setnewText(String newText) {
+
+        TextView n = (TextView) findViewById(R.id.textView5) ;
+        n.setText(newText);
     }
 
     private class NextPageTask extends AsyncTask<String, Void, String> {
@@ -131,5 +148,8 @@ public class Timeline extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
+
     }
 }
+
