@@ -22,7 +22,7 @@ public class Profile extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(Profile.this, popup.class));
+            startActivity(new Intent(Profile.this, popup.class));
             }
         });
 
@@ -30,7 +30,7 @@ public class Profile extends AppCompatActivity {
         b_email.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(Profile.this, change_email.class));
+            startActivity(new Intent(Profile.this, change_email.class));
             }
         });
     }
