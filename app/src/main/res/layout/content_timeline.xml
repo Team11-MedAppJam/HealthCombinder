@@ -20,7 +20,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:id="@+id/timeline_notecard" >
 
             <!-- A CardView that contains a TextView -->
 
@@ -39,7 +40,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:text="Test Title Card"
+                        android:hint="Test Title Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView5"
@@ -49,7 +50,7 @@
                         android:id="@+id/info_text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Testing Symptoms Descriptions"
+                        android:hint="Testing Symptoms Descriptions"
                         android:layout_weight="1" />
                 </LinearLayout>
 

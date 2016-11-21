@@ -15,19 +15,22 @@ import android.view.MenuItem;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Timeline extends AppCompatActivity {
-
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
@@ -42,6 +45,11 @@ public class Timeline extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar();
 
+//        TextView descriptionView = (TextView) findViewById(R.id.info_text);
+//        descriptionView.setText("test");
+//        TextView symptomView = (TextView) findViewById(R.id.textView5);
+//        symptomView.setText("Testtitle");
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +58,10 @@ public class Timeline extends AppCompatActivity {
             }
         });
 
-        new NextPageTask().execute();
+
+        ViewGroup layout = (ViewGroup) findViewById(R.id.activity_timeline);
+
+        new loadNotecardsTask().execute();
         // Example of a call to a native method
 //        TextView tv = (TextView) findViewById(R.id.sample_text);
         //       tv.setText(stringFromJNI());
@@ -100,35 +111,89 @@ public class Timeline extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private class NextPageTask extends AsyncTask<String, Void, String> {
-        private int id;
+    private class loadNotecardsTask extends AsyncTask<String, Void, String> {
+        private ArrayList<String> notecardXmlList;
+        private ArrayList<String> notecardContentList;
 
         protected String doInBackground(String... params) {
+            notecardXmlList = new ArrayList<String>();
+            notecardContentList = new ArrayList<String>();
             try {
-                URL url = new URL(Config.API_ROOT + "/Session");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setDoOutput(true);
-                String message = "";
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                URL notecardsURL = new URL(Config.API_ROOT + "/Notecards");
+                HttpURLConnection notecardsCon = (HttpURLConnection) notecardsURL.openConnection();
+                notecardsCon.setDoOutput(true);
+                StringBuffer message = new StringBuffer();
+                BufferedReader in = new BufferedReader(new InputStreamReader(notecardsCon.getInputStream()));
                 String inputline;
                 while ((inputline = in.readLine()) != null)
-                    message += inputline;
-                return message;
+                    message.append(inputline);
+
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                Document notecardsDoc = builder.parse(new InputSource(new StringReader(message.toString())));
+                Element notecardsRoot = notecardsDoc.getDocumentElement();
+                NodeList notecards = notecardsRoot.getElementsByTagName("notecard");
+                for(int i = 0; notecards.item(i)!=null; ++i)
+                {
+                    Element notecard = (Element) notecards.item(i);
+                    String notecardID = notecard.getElementsByTagName("notecard_id").item(0).getTextContent();
+                    URL notecardURL = new URL(Config.API_ROOT + "/Notecard");
+                    HttpURLConnection notecardCon = (HttpURLConnection) notecardURL.openConnection();
+                    notecardCon.setRequestMethod("POST");
+                    notecardCon.setDoOutput(true);
+                    OutputStreamWriter wr = new OutputStreamWriter(notecardCon.getOutputStream());
+                    wr.write("id="+notecardID);
+                    wr.flush();
+                    wr.close();
+                    in = new BufferedReader(new InputStreamReader(notecardCon.getInputStream()));
+                    message = new StringBuffer();
+                    while ((inputline = in.readLine()) != null)
+                        message.append(inputline);
+                    notecardXmlList.add(message.toString());
+                    URL descriptionURL = new URL(Config.API_ROOT + "/ShowNotecard");
+                    HttpURLConnection descriptionCon = (HttpURLConnection) descriptionURL.openConnection();
+                    descriptionCon.setRequestMethod("POST");
+                    descriptionCon.setDoOutput(true);
+                    wr = new OutputStreamWriter(descriptionCon.getOutputStream());
+                    wr.write("id="+notecardID);
+                    wr.flush();
+                    wr.close();
+                    in = new BufferedReader(new InputStreamReader(descriptionCon.getInputStream()));
+                    message = new StringBuffer();
+                    while ((inputline = in.readLine()) != null)
+                        message.append(inputline);
+                    notecardContentList.add(message.toString());
+                }
+                //return message.toString();
             } catch (Exception e) {
-                return e.toString();
+                //return e.toString();
             }
+            return "";
         }
 
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String param) {
             try {
                 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder builder = factory.newDocumentBuilder();
-                Document doc = builder.parse(new InputSource(new StringReader(result)));
-                Element element = doc.getDocumentElement();
-                int id = Integer.parseInt(element.getTextContent());
-//                textview.setText(element.getTextContent());
+                for(int i = 0; i < notecardXmlList.size(); ++i) {
+                    Document doc = builder.parse(new InputSource(new StringReader(notecardXmlList.get(i))));
+                    Element notecard = doc.getDocumentElement();
+                    String id = notecard.getElementsByTagName("notecard_id").item(0).getTextContent();
+                    TextView symptomView = (TextView) findViewById(R.id.textView5);
+                    symptomView.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
+                    //TextView timeView = (TextView) findViewById(...);
+                    //timeView.setText(notecard.getElementsByTagName("time").item(0).getTextContent());
+                    TextView descriptionView = (TextView) findViewById(R.id.info_text);
+                    descriptionView.setText(notecardContentList.get(i));
+                    //timeView.setText
+
+                    break; //remove this line when multiple notecards
+                }
+//                TextView descriptionView = (TextView) findViewById(R.id.info_text);
+//                descriptionView.setText("test");
+//                TextView symptomView = (TextView) findViewById(R.id.textView5);
+//                symptomView.setText("Testtitle");
             } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     }
