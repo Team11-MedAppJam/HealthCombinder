@@ -169,6 +169,11 @@ public class Timeline extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toReminder(View view){
+        Intent intent = new Intent(this, Reminder.class);
+        startActivity(intent);
+    }
+
     public void sendIntentAbout(MenuItem view) {
         Intent intent = new Intent(this, about.class);
         startActivity(intent);
@@ -251,8 +256,8 @@ public class Timeline extends AppCompatActivity {
                     symptomView.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
                     //TextView timeView = (TextView) findViewById(...);
                     //timeView.setText(notecard.getElementsByTagName("time").item(0).getTextContent());
-                    TextView descriptionView = (TextView) findViewById(R.id.info_text);
-                    descriptionView.setText(notecardContentList.get(i));
+                    //TextView descriptionView = (TextView) findViewById(R.id.info_text);
+                    //descriptionView.setText(notecardContentList.get(i));
                     //timeView.setText
 
                     break; //remove this line when multiple notecards
