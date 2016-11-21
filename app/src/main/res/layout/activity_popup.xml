@@ -87,6 +87,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="91dp"
         android:id="@+id/submit_password"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:onClick="submit" />
 
 </RelativeLayout>
