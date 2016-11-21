@@ -38,7 +38,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Timeline extends AppCompatActivity {
-
+    private TextView textview;
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
@@ -53,10 +53,6 @@ public class Timeline extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar();
 
-//        TextView descriptionView = (TextView) findViewById(R.id.info_text);
-//        descriptionView.setText("test");
-//        TextView symptomView = (TextView) findViewById(R.id.textView5);
-//        symptomView.setText("Testtitle");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -66,8 +62,10 @@ public class Timeline extends AppCompatActivity {
             }
         });
 
-
+        textview = new TextView(this);
         ViewGroup layout = (ViewGroup) findViewById(R.id.activity_timeline);
+        layout.addView(textview);
+        textview.setText("hi");
 
         new loadNotecardsTask().execute();
         // Example of a call to a native method
@@ -75,63 +73,9 @@ public class Timeline extends AppCompatActivity {
         //       tv.setText(stringFromJNI());
 
 
-        /////////////////////////////
-        //Adding cards dynamically//
-        ///////////////////////////
 
-        //Converting dp to pixels
-        Resources r = getResources();
-        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, r.getDisplayMetrics());
-        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 275, r.getDisplayMetrics());
-        int radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
 
-        //Set ids, attach elements, then add to timeline
-        for(int i = 0; i < 5; i++){
-            //Find timeline list
-            LinearLayout timelineCards = (LinearLayout) findViewById(R.id.timeline_notecards);
 
-            //Declare objects to iterate on
-            Context mContext = getApplicationContext();
-            CardView cardView = new CardView(mContext);
-            LinearLayout cardLinearLayout = new LinearLayout(mContext);
-            TextView cardHeader = new TextView(mContext);
-            TextView cardDescrip = new TextView(mContext);
-
-            //Set cardView styles
-            LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(width, height);
-            cardViewParams.gravity = Gravity.CENTER;
-            cardViewParams.setMargins(0, 0, 0, 10);
-            cardView.setRadius(radius);
-            cardView.setLayoutParams(cardViewParams);
-            cardView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view){
-                    Intent intent = new Intent(Timeline.this, about.class);
-                    startActivity(intent);
-                }
-            });
-
-            //Set cardLinearLayout styles
-            LinearLayout.LayoutParams cardLinearLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-            cardLinearLayout.setOrientation(LinearLayout.VERTICAL);
-
-            //Set cardHeader styles
-            FrameLayout.LayoutParams cardHeaderParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-            cardHeader.setHint("Test Title Card");
-
-            //Set cardDescrip styles
-            FrameLayout.LayoutParams cardDescParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-            cardDescrip.setLayoutParams(cardDescParams);
-            cardDescrip.setHint("Testing symptoms descriptions");
-
-            //Attach Elements in Hierachy
-            cardLinearLayout.addView(cardHeader);
-            cardLinearLayout.addView(cardDescrip);
-            cardView.addView(cardLinearLayout);
-
-            //Add cardView to timeline
-            timelineCards.addView(cardView);
-        }
 
     }
 
@@ -187,7 +131,7 @@ public class Timeline extends AppCompatActivity {
             notecardXmlList = new ArrayList<String>();
             notecardContentList = new ArrayList<String>();
             try {
-                URL notecardsURL = new URL(Config.API_ROOT + "/Notecards");
+                URL notecardsURL = new URL(Config.API_ROOT + "/Notecards?sort=time&reverse=true");
                 HttpURLConnection notecardsCon = (HttpURLConnection) notecardsURL.openConnection();
                 notecardsCon.setDoOutput(true);
                 StringBuffer message = new StringBuffer();
@@ -234,33 +178,88 @@ public class Timeline extends AppCompatActivity {
                 }
                 //return message.toString();
             } catch (Exception e) {
-                //return e.toString();
+                return e.toString();
             }
             return "";
         }
 
         protected void onPostExecute(String param) {
             try {
+
                 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder builder = factory.newDocumentBuilder();
                 for(int i = 0; i < notecardXmlList.size(); ++i) {
                     Document doc = builder.parse(new InputSource(new StringReader(notecardXmlList.get(i))));
                     Element notecard = doc.getDocumentElement();
                     String id = notecard.getElementsByTagName("notecard_id").item(0).getTextContent();
-                    TextView symptomView = (TextView) findViewById(R.id.textView5);
-                    symptomView.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
-                    //TextView timeView = (TextView) findViewById(...);
-                    //timeView.setText(notecard.getElementsByTagName("time").item(0).getTextContent());
-                    TextView descriptionView = (TextView) findViewById(R.id.info_text);
-                    descriptionView.setText(notecardContentList.get(i));
-                    //timeView.setText
 
-                    break; //remove this line when multiple notecards
                 }
-//                TextView descriptionView = (TextView) findViewById(R.id.info_text);
-//                descriptionView.setText("test");
-//                TextView symptomView = (TextView) findViewById(R.id.textView5);
-//                symptomView.setText("Testtitle");
+                /////////////////////////////
+                //Adding cards dynamically//
+                ///////////////////////////
+
+                //Converting dp to pixels
+                setContentView(R.layout.activity_timeline);
+                Resources r = getResources();
+                int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, r.getDisplayMetrics());
+                int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 275, r.getDisplayMetrics());
+                int radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
+                //Set ids, attach elements, then add to timeline
+                for(int i = 0; i < notecardXmlList.size(); i++){
+                    Document doc = builder.parse(new InputSource(new StringReader(notecardXmlList.get(i))));
+                    Element notecard = doc.getDocumentElement();
+                    final String id = notecard.getElementsByTagName("notecard_id").item(0).getTextContent();
+
+                    //Find timeline list
+                    LinearLayout timelineCards = (LinearLayout) findViewById(R.id.timeline_notecards);
+
+                    //Declare objects to iterate on
+                    Context mContext = getApplicationContext();
+                    CardView cardView = new CardView(mContext);
+                    LinearLayout cardLinearLayout = new LinearLayout(mContext);
+                    TextView cardHeader = new TextView(mContext);
+                    TextView cardDescrip = new TextView(mContext);
+
+                    //Set cardView styles
+                    LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(width, height);
+                    cardViewParams.gravity = Gravity.CENTER;
+                    cardViewParams.setMargins(0, 0, 0, 10);
+                    cardView.setRadius(radius);
+                    cardView.setLayoutParams(cardViewParams);
+                    cardView.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View view){
+                            Intent intent = new Intent(Timeline.this, ViewCard.class);
+                            intent.putExtra("notecard_id",id);
+                            startActivity(intent);
+                        }
+                    });
+
+                    //Set cardLinearLayout styles
+                    LinearLayout.LayoutParams cardLinearLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                    cardLinearLayout.setOrientation(LinearLayout.VERTICAL);
+
+                    //Set cardHeader styles
+                    FrameLayout.LayoutParams cardHeaderParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+                    cardHeader.setHint("Test Title Card");
+                    cardHeader.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
+
+                    //Set cardDescrip styles
+                    FrameLayout.LayoutParams cardDescParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                    cardDescrip.setLayoutParams(cardDescParams);
+                    cardDescrip.setHint("Testing symptoms descriptions");
+                    cardDescrip.setText(notecardContentList.get(i));
+
+                    //Attach Elements in Hierachy
+                    cardLinearLayout.addView(cardHeader);
+                    cardLinearLayout.addView(cardDescrip);
+                    cardView.addView(cardLinearLayout);
+
+                    //Add cardView to timeline
+                    timelineCards.addView(cardView);
+                }
+
+
             } catch (Exception e) {
             }
         }
