@@ -29,8 +29,6 @@ public class Reminder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        create_view(display_reminder(get_field_from_Pref()),id);
     }
 
     public void addReminder (View view){
@@ -88,9 +86,9 @@ public class Reminder extends AppCompatActivity {
         String cmt = "";
         String d = "";
         String t = "";
+
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.ReminderPref), Context.MODE_PRIVATE);
-        String restoreText = sharedPreferences.getString("text", null);
-//        if (restoreText !=null){
+
         appt = sharedPreferences.getString(getString(R.string.Appointment), "");
         cmt = sharedPreferences.getString(getString(R.string.Comment), "");
         d = sharedPreferences.getString(getString(R.string.Date), "");
