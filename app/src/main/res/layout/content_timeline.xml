@@ -16,16 +16,15 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true">
+        android:layout_above="@+id/to_profile">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:id="@+id/timeline_notecard" >
+            android:id="@+id/timeline_notecards">
 
             <!-- A CardView that contains a TextView -->
-
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/card_view"
@@ -57,6 +56,7 @@
 
             </android.support.v7.widget.CardView>
 
+
         </LinearLayout>
     </ScrollView>
 
@@ -76,6 +76,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/button3"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

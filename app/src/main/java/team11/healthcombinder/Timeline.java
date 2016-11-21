@@ -1,17 +1,24 @@
 package team11.healthcombinder;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.support.v7.widget.CardView;
+import android.view.ViewGroup.LayoutParams;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -31,6 +38,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Timeline extends AppCompatActivity {
+
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
@@ -65,6 +73,58 @@ public class Timeline extends AppCompatActivity {
         // Example of a call to a native method
 //        TextView tv = (TextView) findViewById(R.id.sample_text);
         //       tv.setText(stringFromJNI());
+
+
+        /////////////////////////////
+        //Adding cards dynamically//
+        ///////////////////////////
+
+        //Find timeline list
+        LinearLayout timelineCards = (LinearLayout) findViewById(R.id.timeline_notecards);
+
+        //Declare objects to iterate on
+        Context mContext = getApplicationContext();
+        CardView cardView = new CardView(mContext);
+        LinearLayout cardLinearLayout = new LinearLayout(mContext);
+        TextView cardHeader = new TextView(mContext);
+        TextView cardDescrip = new TextView(mContext);
+
+        //Converting dp to pixels
+        Resources r = getResources();
+        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, r.getDisplayMetrics());
+        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 275, r.getDisplayMetrics());
+        int radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
+
+        //Set cardView styles
+        LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(width, height, Gravity.CENTER);
+        cardView.setRadius(radius);
+        cardView.setLayoutParams(cardViewParams);
+
+        //Set cardLinearLayout styles
+        LinearLayout.LayoutParams cardLinearLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        cardLinearLayout.setOrientation(LinearLayout.VERTICAL);
+
+        //Set cardHeader styles
+        FrameLayout.LayoutParams cardHeaderParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        cardHeader.setHint("Test Title Card");
+
+        //Set cardDescrip styles
+        FrameLayout.LayoutParams cardDescParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        cardDescrip.setLayoutParams(cardDescParams);
+
+        //Set ids, attach elements, then add to timeline
+        for(int i = 0; i < 5; i++){
+            //Rename ids for each card SORRY STEPHEN NOT DONE YET
+
+            //Attach Elements in Hierachy
+            cardLinearLayout.addView(cardHeader);
+            cardLinearLayout.addView(cardDescrip);
+            cardView.addView(cardLinearLayout);
+
+            //Add cardView to timeline
+            timelineCards.addView(cardView);
+        }
+
     }
 
     @Override
