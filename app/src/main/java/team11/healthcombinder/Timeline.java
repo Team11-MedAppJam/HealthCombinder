@@ -97,6 +97,11 @@ public class Timeline extends AppCompatActivity {
             TextView cardHeader = new TextView(mContext);
             TextView cardDescrip = new TextView(mContext);
 
+            //STEPHEN LOOK HERE FOR NAMING CONVENTIONS
+            //Whole card
+            cardHeader.setId(i+1);
+            cardDescrip.setId((i+1)*10);
+
             //Set cardView styles
             LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(width, height);
             cardViewParams.gravity = Gravity.CENTER;
