@@ -197,7 +197,6 @@ public class Timeline extends AppCompatActivity {
                     Document doc = builder.parse(new InputSource(new StringReader(notecardXmlList.get(i))));
                     Element notecard = doc.getDocumentElement();
                     String id = notecard.getElementsByTagName("notecard_id").item(0).getTextContent();
-<<<<<<< HEAD
                     TextView symptomView = (TextView) findViewById(R.id.textView5);
                     symptomView.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
                     //TextView timeView = (TextView) findViewById(...);
@@ -207,7 +206,7 @@ public class Timeline extends AppCompatActivity {
                     //timeView.setText
 
                     break; //remove this line when multiple notecards
-=======
+
 
                 }
                 /////////////////////////////
@@ -273,7 +272,6 @@ public class Timeline extends AppCompatActivity {
 
                     //Add cardView to timeline
                     timelineCards.addView(cardView);
->>>>>>> origin/master
                 }
 
 
