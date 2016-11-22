@@ -17,7 +17,6 @@
         android:id="@+id/reminder_item"
         android:enabled="true"
         android:icon="@drawable/ic_check_circle_white_24dp"
-        android:title="Reminders"
-        app:showAsAction ="ifRoom"/>
+        android:title="Reminders" />
 
 </menu>

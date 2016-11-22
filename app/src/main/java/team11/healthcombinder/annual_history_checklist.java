@@ -13,8 +13,9 @@ public class annual_history_checklist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_annual_history_checklist);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if (getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 //        ImageButton b_allergies = (ImageButton) findViewById(R.id.edit_allergies);
 //        ImageButton b_immunization = (ImageButton) findViewById(R.id.edit_immunization);
 //        ImageButton b_chronic = (ImageButton) findViewById(R.id.edit_chr_med_allergies);

@@ -234,6 +234,17 @@ public class Timeline extends AppCompatActivity {
 
                     break; //remove this line when multiple notecards
 
+//                    TextView symptomView = (TextView) findViewById(R.id.textView5);
+//                    symptomView.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
+                    //TextView timeView = (TextView) findViewById(...);
+                    //timeView.setText(notecard.getElementsByTagName("time").item(0).getTextContent());
+                    //TextView descriptionView = (TextView) findViewById(R.id.info_text);
+                    //descriptionView.setText(notecardContentList.get(i));
+                    //timeView.setText
+
+                    //break; //remove this line when multiple notecards
+
+
                 }
                 /////////////////////////////
                 //Adding cards dynamically//
