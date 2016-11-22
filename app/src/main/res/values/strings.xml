@@ -14,7 +14,14 @@
     <string name="questions_comments_or_concerns">Questions, Comments, or Concerns</string>
     <string name="description">Description:</string>
     <string name="enter_symptom">Enter Symptom</string>
-
+    <string name="field_seperate">{*#*}</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    //String name for reminder REFERENCE 
+    <string name="ReminderPref">com.HealthCombinder.Reminder.SHAREDPREFERENCE</string>
+    <string name="Appointment">Appointment</string>
+    <string name="Comment">Comment</string>
+    <string name="Date">Date</string>
+    <string name="Time">Time</string>
 </resources>

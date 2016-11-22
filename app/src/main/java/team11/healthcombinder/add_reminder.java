@@ -6,7 +6,9 @@ import android.app.Dialog;
 import java.util.Calendar;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -83,6 +85,22 @@ public class add_reminder extends AppCompatActivity {
         newFragment.show(getFragmentManager(),"TimePicker");
     }
 
+
+    //Set SharedPreference
+    public void CreatePreference(){
+
+        SharedPreferences setting;
+        SharedPreferences.Editor editor;
+        setting = getSharedPreferences(getString(R.string.ReminderPref), Context.MODE_PRIVATE);
+        editor = setting.edit();
+        editor.putString(getString(R.string.Appointment), s_appointment);
+        editor.putString(getString(R.string.Comment), s_comment);
+        editor.putString(getString(R.string.Date), s_date);
+        editor.putString(getString(R.string.Time), s_time);
+        editor.apply();
+
+    }
+
     public void save_reminder(View v){
         EditText appt = (EditText) findViewById(R.id.et_appointment);
         EditText cmmt = (EditText) findViewById(R.id.et_comment);
@@ -95,11 +113,17 @@ public class add_reminder extends AppCompatActivity {
         s_date = d.getText().toString();
         s_time = d.getText().toString();
         String[] array = {s_appointment, s_comment, s_date,s_time};
+
         Intent intent = new Intent();
         intent.putExtra("result",array);
         setResult(RESULT_OK,intent);
+
+        CreatePreference();
         this.finish();
     }
+
+
+
 
 
 }
