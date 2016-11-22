@@ -56,11 +56,14 @@ public class Reminder extends Timeline {
                         return false;
                     }
                 });
+<<<<<<< HEAD
         if (getSupportActionBar()!= null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         Timeline t = new Timeline();
+=======
+>>>>>>> origin/master
 
     }
 

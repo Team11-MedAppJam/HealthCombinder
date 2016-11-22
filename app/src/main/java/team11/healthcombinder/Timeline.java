@@ -56,7 +56,13 @@ public class Timeline extends AppCompatActivity {
         setContentView(R.layout.activity_timeline);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Timeline");
+<<<<<<< HEAD
 //        setSupportActionBar(toolbar);
+=======
+
+//        setSupportActionBar(toolbar);
+
+>>>>>>> origin/master
         getSupportActionBar();
 
         BottomBar();
@@ -94,6 +100,10 @@ public class Timeline extends AppCompatActivity {
                             case R.id.profile_item:
                                 startActivity(new Intent(getApplicationContext(), Profile.class));
                                 break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 
                             case R.id.timeline_item:
                                 Intent timelineIntent = new Intent(getApplicationContext(), Timeline.class);
