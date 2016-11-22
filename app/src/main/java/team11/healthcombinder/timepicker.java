@@ -85,7 +85,7 @@ public class timepicker extends DialogFragment implements TimePickerDialog.OnTim
             currentHour = hourOfDay;
         }
 
-        tv.setText("Your chosen time is...\n\n");
+        //tv.setText("Your chosen time is...\n\n");
         //Display the user changed time on TextView
         tv.setText(tv.getText()+ String.valueOf(currentHour)
                 + " : " + String.valueOf(minute) + " " + aMpM + "\n");

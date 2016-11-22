@@ -31,4 +31,8 @@ public class about extends AppCompatActivity {
         Intent intent = new Intent(this, Timeline.class);
         startActivity(intent);
     }
+
+    public void dismiss(View view){
+        this.finish();
+    }
 }
