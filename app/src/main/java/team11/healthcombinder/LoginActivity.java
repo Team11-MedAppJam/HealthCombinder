@@ -26,6 +26,8 @@ import android.widget.TextView;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 import java.io.StringReader;
+import java.net.URLEncoder;
+
 import org.xml.sax.InputSource;
 
 public class LoginActivity extends AppCompatActivity {
@@ -61,6 +63,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void createAccountButton(final View view) {
+        Intent createAccountIntent = new Intent(this, CreateAccount.class);
+        startActivity(createAccountIntent);
+    }
+
     private class LoginTask extends AsyncTask<String, Void, String>{
         protected String doInBackground(String... urls) {
             try {
@@ -71,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 con.setDoOutput(true);
                 String message = "";
                 OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
-                wr.write("email="+urls[0]+"&password="+urls[1]);
+                wr.write("email="+ URLEncoder.encode(urls[0],"utf-8")+"&password="+URLEncoder.encode(urls[1],"utf-8"));
                 wr.flush();
                 wr.close();
                 BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
