@@ -61,6 +61,10 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(this, Timeline.class);
         startActivity(intent);
     }
+    public void onResume() {
+        super.onResume();
+        new GetUserInfoTask().execute();
+    }
 
 
     private class GetUserInfoTask extends AsyncTask<String, Void, String> {
@@ -91,10 +95,13 @@ public class Profile extends AppCompatActivity {
                 String email = root.getElementsByTagName("email").item(0).getTextContent();
                 String name = root.getElementsByTagName("first_name").item(0).getTextContent() + " " +
                         root.getElementsByTagName("last_name").item(0).getTextContent();
+                String dob = root.getElementsByTagName("birth_date").item(0).getTextContent();
                 TextView nameText = (TextView) findViewById(R.id.textView);
                 TextView emailText = (TextView) findViewById(R.id.textView5);
+                TextView dateText = (TextView) findViewById(R.id.textView2);
                 nameText.setText(name);
                 emailText.setText(email);
+                dateText.setText("Birth date: "+dob);
             } catch (Exception e) {
                 e.printStackTrace();
             }

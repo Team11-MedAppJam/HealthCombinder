@@ -30,8 +30,9 @@ public class add_reminder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reminder);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if (getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         dateView = (TextView) findViewById(R.id.dateDisplay);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -111,7 +112,7 @@ public class add_reminder extends AppCompatActivity {
         s_appointment = appt.getText().toString();
         s_comment = cmmt.getText().toString();
         s_date = d.getText().toString();
-        s_time = d.getText().toString();
+        s_time = t.getText().toString();
         String[] array = {s_appointment, s_comment, s_date,s_time};
 
         Intent intent = new Intent();

@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         intent = new Intent(this, Timeline.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         new NextPageTask().execute(); //Remove this line in app
     }
 

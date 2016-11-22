@@ -95,6 +95,7 @@ public class change_email extends AppCompatActivity {
                 {
 
                     newText.setText("Email successfully changed to " + editEmail.getText().toString());
+                    change_email.this.finish();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

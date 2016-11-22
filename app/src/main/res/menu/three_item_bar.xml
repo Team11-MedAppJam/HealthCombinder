@@ -16,6 +16,7 @@
     <item
         android:id="@+id/reminder_item"
         android:icon="@drawable/ic_check_circle_white_24dp"
+<<<<<<< HEAD
         android:enabled="true"
         android:title="Reminders"
         app:showAsAction="ifRoom"/>
@@ -26,5 +27,8 @@
         android:title="Export"
         app:showAsAction="ifRoom"/>
 
+=======
+        android:title="Reminders" />
+>>>>>>> origin/master
 
 </menu>

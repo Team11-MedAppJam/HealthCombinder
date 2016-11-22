@@ -1,5 +1,6 @@
 package team11.healthcombinder;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -55,31 +56,13 @@ public class Timeline extends AppCompatActivity {
         setContentView(R.layout.activity_timeline);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Timeline");
+<<<<<<< HEAD
+=======
+//        setSupportActionBar(toolbar);
+>>>>>>> origin/master
         getSupportActionBar();
 
-        // BOTTOM-BAR STUFFS:
-        bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.profile_item:
-                                startActivity(new Intent(getApplicationContext(), Profile.class));
-                                break;
-                            case R.id.reminder_item:
-                                startActivity(new Intent(getApplicationContext(), Reminder.class));
-                                break;
-                            case R.id.export_item:
-                                startActivity(new Intent(getApplicationContext(), Export.class));
-                                break;
-                        }
-                        return false;
-                    }
-                });
-
+        BottomBar();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +81,42 @@ public class Timeline extends AppCompatActivity {
         // Example of a call to a native method
 //        TextView tv = (TextView) findViewById(R.id.sample_text);
         //       tv.setText(stringFromJNI());
+
+    }
+
+    public void BottomBar (){
+        // BOTTOM-BAR STUFFS:
+        bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.profile_item:
+                                startActivity(new Intent(getApplicationContext(), Profile.class));
+                                break;
+<<<<<<< HEAD
+=======
+
+                            case R.id.timeline_item:
+                                Intent timelineIntent = new Intent(getApplicationContext(), Timeline.class);
+                                timelineIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(timelineIntent);
+                                break;
+
+>>>>>>> origin/master
+                            case R.id.reminder_item:
+                                startActivity(new Intent(getApplicationContext(), Reminder.class));
+                                break;
+                            case R.id.export_item:
+                                startActivity(new Intent(getApplicationContext(), Export.class));
+                                break;
+                        }
+                        return false;
+                    }
+                });
 
     }
     @Override
@@ -222,15 +241,6 @@ public class Timeline extends AppCompatActivity {
                     Document doc = builder.parse(new InputSource(new StringReader(notecardXmlList.get(i))));
                     Element notecard = doc.getDocumentElement();
                     String id = notecard.getElementsByTagName("notecard_id").item(0).getTextContent();
-                    TextView symptomView = (TextView) findViewById(R.id.textView5);
-                    symptomView.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
-                    //TextView timeView = (TextView) findViewById(...);
-                    //timeView.setText(notecard.getElementsByTagName("time").item(0).getTextContent());
-                    //TextView descriptionView = (TextView) findViewById(R.id.info_text);
-                    //descriptionView.setText(notecardContentList.get(i));
-                    //timeView.setText
-
-                    break; //remove this line when multiple notecards
 
                 }
                 /////////////////////////////

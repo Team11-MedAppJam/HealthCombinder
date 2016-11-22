@@ -95,6 +95,7 @@ public class popup extends AppCompatActivity {
                 {
 
                     textview.setText("Password successfully changed");
+                    popup.this.finish();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

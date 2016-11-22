@@ -16,7 +16,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/to_profile">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,21 +29,4 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:text="Profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/to_profile"
-        android:onClick="sendMessage"/>
-
-    <Button
-        android:text="Reminder"
-        android:onClick="toReminder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>

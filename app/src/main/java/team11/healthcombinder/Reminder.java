@@ -23,7 +23,6 @@ import java.util.StringTokenizer;
 public class Reminder extends Timeline {
 
     ArrayList <String[]>list_of_Reminder = new ArrayList<String[]>();
-
     Integer id = 5000; //id of Reminder
     int count = 0;
 
@@ -31,6 +30,7 @@ public class Reminder extends Timeline {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
+<<<<<<< HEAD
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // BOTTOM-BAR STUFFS:
@@ -54,6 +54,14 @@ public class Reminder extends Timeline {
                         return false;
                     }
                 });
+=======
+        if (getSupportActionBar()!= null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        Timeline t = new Timeline();
+
+>>>>>>> origin/master
     }
 
     public void addReminder (View view){
