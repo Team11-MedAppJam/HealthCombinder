@@ -20,7 +20,6 @@ import java.util.StringTokenizer;
 public class Reminder extends AppCompatActivity {
 
     ArrayList <String[]>list_of_Reminder = new ArrayList<String[]>();
-
     Integer id = 5000; //id of Reminder
     int count = 0;
 
@@ -28,7 +27,12 @@ public class Reminder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar()!= null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        Timeline t = new Timeline();
+
     }
 
     public void addReminder (View view){

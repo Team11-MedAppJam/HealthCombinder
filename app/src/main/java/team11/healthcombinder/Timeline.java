@@ -1,5 +1,6 @@
 package team11.healthcombinder;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -54,9 +55,32 @@ public class Timeline extends AppCompatActivity {
         setContentView(R.layout.activity_timeline);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Timeline");
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         getSupportActionBar();
 
+        BottomBar();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendAddCard(view);
+            }
+        });
+
+        textview = new TextView(this);
+        ViewGroup layout = (ViewGroup) findViewById(R.id.activity_timeline);
+        layout.addView(textview);
+        textview.setText("hi");
+
+        new loadNotecardsTask().execute();
+        // Example of a call to a native method
+//        TextView tv = (TextView) findViewById(R.id.sample_text);
+        //       tv.setText(stringFromJNI());
+
+    }
+
+    public void BottomBar (){
         // BOTTOM-BAR STUFFS:
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
@@ -81,25 +105,6 @@ public class Timeline extends AppCompatActivity {
                         return false;
                     }
                 });
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendAddCard(view);
-            }
-        });
-
-        textview = new TextView(this);
-        ViewGroup layout = (ViewGroup) findViewById(R.id.activity_timeline);
-        layout.addView(textview);
-        textview.setText("hi");
-
-        new loadNotecardsTask().execute();
-        // Example of a call to a native method
-//        TextView tv = (TextView) findViewById(R.id.sample_text);
-        //       tv.setText(stringFromJNI());
 
     }
     @Override
