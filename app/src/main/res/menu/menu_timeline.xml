@@ -13,4 +13,10 @@
         android:title="About"
         android:onClick="sendIntentAbout"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_menu"
+        android:orderInCategory="100"
+        android:title="Menu"
+        android:onClick="sendIntentMenu"
+        app:showAsAction="never" />
 </menu>

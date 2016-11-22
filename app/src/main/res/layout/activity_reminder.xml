@@ -5,10 +5,6 @@
     android:id="@+id/activity_reminder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="team11.healthcombinder.Reminder"
     >
 
@@ -20,14 +16,15 @@
         android:layout_gravity="bottom|end"
         app:srcCompat="@android:drawable/ic_input_add"
         app:backgroundTint="@color/colorPrimaryDark"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
         app:rippleColor="?android:attr/colorAccent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="14dp"
+
         app:elevation="15dp"
-        android:onClick="addReminder"/>
+        android:onClick="addReminder"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_alignEnd="@+id/bottom_navigation"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -41,6 +38,16 @@
 
 
     </ScrollView>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimaryDark"
+        app:itemIconTint="#ffffff"
+        app:itemTextColor="#ffffff"
+        app:menu="@menu/three_item_bar" />
 
 
 </RelativeLayout>

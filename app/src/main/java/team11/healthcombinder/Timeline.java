@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -32,10 +34,12 @@ import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 
 public class Timeline extends AppCompatActivity {
     private TextView textview;
@@ -52,6 +56,31 @@ public class Timeline extends AppCompatActivity {
         toolbar.setTitle("Timeline");
         setSupportActionBar(toolbar);
         getSupportActionBar();
+
+        // BOTTOM-BAR STUFFS:
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.profile_item:
+                                startActivity(new Intent(getApplicationContext(), Profile.class));
+                                break;
+
+                            case R.id.timeline_item:
+                                startActivity(new Intent(getApplicationContext(), Timeline.class));
+                                break;
+
+                            case R.id.reminder_item:
+                                startActivity(new Intent(getApplicationContext(), Reminder.class));
+                                break;
+                        }
+                        return false;
+                    }
+                });
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -107,7 +136,6 @@ public class Timeline extends AppCompatActivity {
      */
     public native String stringFromJNI();
 
-
     public void sendMessage(View view) {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
@@ -126,6 +154,10 @@ public class Timeline extends AppCompatActivity {
     public void sendAddCard(View fab) {
         Intent intent = new Intent(this, addcard.class);
         startActivity(intent);
+    }
+
+    public void sendIntentMenu(View view){
+        startActivity(new Intent(this, Menu.class));
     }
 
     private class loadNotecardsTask extends AsyncTask<String, Void, String> {
@@ -197,7 +229,6 @@ public class Timeline extends AppCompatActivity {
                     Document doc = builder.parse(new InputSource(new StringReader(notecardXmlList.get(i))));
                     Element notecard = doc.getDocumentElement();
                     String id = notecard.getElementsByTagName("notecard_id").item(0).getTextContent();
-<<<<<<< HEAD
                     TextView symptomView = (TextView) findViewById(R.id.textView5);
                     symptomView.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
                     //TextView timeView = (TextView) findViewById(...);
@@ -207,7 +238,6 @@ public class Timeline extends AppCompatActivity {
                     //timeView.setText
 
                     break; //remove this line when multiple notecards
-=======
 
                 }
                 /////////////////////////////
@@ -273,7 +303,6 @@ public class Timeline extends AppCompatActivity {
 
                     //Add cardView to timeline
                     timelineCards.addView(cardView);
->>>>>>> origin/master
                 }
 
 
