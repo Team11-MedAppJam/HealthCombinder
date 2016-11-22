@@ -218,6 +218,7 @@ public class Timeline extends AppCompatActivity {
                     CardView cardView = new CardView(mContext);
                     LinearLayout cardLinearLayout = new LinearLayout(mContext);
                     TextView cardHeader = new TextView(mContext);
+                    TextView cardDate = new TextView(mContext);
                     TextView cardDescrip = new TextView(mContext);
 
                     //Set cardView styles
@@ -244,6 +245,8 @@ public class Timeline extends AppCompatActivity {
                     cardHeader.setHint("Test Title Card");
                     cardHeader.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
 
+                    cardDate.setText(notecard.getElementsByTagName("time").item(0).getTextContent());
+
                     //Set cardDescrip styles
                     FrameLayout.LayoutParams cardDescParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
                     cardDescrip.setLayoutParams(cardDescParams);
@@ -252,6 +255,7 @@ public class Timeline extends AppCompatActivity {
 
                     //Attach Elements in Hierachy
                     cardLinearLayout.addView(cardHeader);
+                    cardLinearLayout.addView(cardDate);
                     cardLinearLayout.addView(cardDescrip);
                     cardView.addView(cardLinearLayout);
 
