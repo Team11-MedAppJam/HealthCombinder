@@ -47,6 +47,7 @@ public class Timeline extends AppCompatActivity {
     static {
         System.loadLibrary("native-lib");
     }
+    public BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +55,10 @@ public class Timeline extends AppCompatActivity {
         setContentView(R.layout.activity_timeline);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Timeline");
-        setSupportActionBar(toolbar);
         getSupportActionBar();
 
         // BOTTOM-BAR STUFFS:
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+        bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -69,13 +69,11 @@ public class Timeline extends AppCompatActivity {
                             case R.id.profile_item:
                                 startActivity(new Intent(getApplicationContext(), Profile.class));
                                 break;
-
-                            case R.id.timeline_item:
-                                startActivity(new Intent(getApplicationContext(), Timeline.class));
-                                break;
-
                             case R.id.reminder_item:
                                 startActivity(new Intent(getApplicationContext(), Reminder.class));
+                                break;
+                            case R.id.export_item:
+                                startActivity(new Intent(getApplicationContext(), Export.class));
                                 break;
                         }
                         return false;
@@ -123,7 +121,7 @@ public class Timeline extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
             return true;
         }
 

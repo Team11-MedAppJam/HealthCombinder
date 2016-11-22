@@ -3,9 +3,12 @@ package team11.healthcombinder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -17,7 +20,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Reminder extends AppCompatActivity {
+public class Reminder extends Timeline {
 
     ArrayList <String[]>list_of_Reminder = new ArrayList<String[]>();
 
@@ -29,6 +32,28 @@ public class Reminder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // BOTTOM-BAR STUFFS:
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.profile_item:
+                                startActivity(new Intent(getApplicationContext(), Profile.class));
+                                break;
+
+                            case R.id.timeline_item:
+                                startActivity(new Intent(getApplicationContext(), Timeline.class));
+                                break;
+                            case R.id.export_item:
+                                startActivity(new Intent(getApplicationContext(), Export.class));
+                                break;
+                        }
+                        return false;
+                    }
+                });
     }
 
     public void addReminder (View view){

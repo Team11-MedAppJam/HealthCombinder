@@ -1,56 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="team11.healthcombinder">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="team11.healthcombinder">
 
-<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
-<application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name"
-    android:supportsRtl="true" android:theme="@style/AppTheme">
-    <activity android:name=".Timeline" android:label="@string/app_name" android:theme="@style/AppTheme.NoActionBar">
-
-<<<<<<< HEAD
-    </activity>
-    <activity android:name=".LoginActivity">
-
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-=======
-        </activity>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Timeline"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
->>>>>>> origin/master
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity android:name=".Profile" android:theme="@style/AppTheme.NoActionBar" />
-    <!--
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
         -->
-    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
-<<<<<<< HEAD
-    <activity android:name=".addcard" />
-    <activity android:name=".popup" android:theme="@style/AppTheme.Popup" />
-    <activity android:name=".annual_history_checklist" android:label="@string/history_checklist"
-        android:parentActivityName=".Profile" />
-    <activity android:name=".change_email" android:theme="@style/AppTheme.Popup" />
-    <activity android:name=".about" android:label="About" android:theme="@style/AppTheme.NoActionBar" />
-    <activity android:name=".ViewCard" />
-    <activity android:name=".Reminder" android:label="Reminder" android:parentActivityName=".Timeline" />
-    <activity android:name=".add_reminder" />
-
-    <HEAD android:theme="@style/AppTheme"
-        android:label="Add Reminder"
-        android:parentActivityName=".Reminder"/>
-    android:theme="@style/AppTheme.Popup" />
-    <activity android:name=".CreateAccount"></activity>
-origin/master
-</application>
-
-</manifest>
-=======
         <activity android:name=".addcard" />
         <activity
             android:name=".popup"
@@ -71,10 +51,15 @@ origin/master
             android:name=".Reminder"
             android:label="Reminder"
             android:parentActivityName=".Timeline" />
-        <activity
-            android:name=".add_reminder"
-            android:theme="@style/AppTheme.Popup" />
-        <activity android:name=".CreateAccount"></activity>
-    </application>
->>>>>>> origin/master
+        <activity android:name=".add_reminder" />
 
+        <HEAD
+            android:label="Add Reminder"
+            android:parentActivityName=".Reminder"
+            android:theme="@style/AppTheme" />
+        android:theme="@style/AppTheme.Popup" />
+        <activity android:name=".CreateAccount" />
+        <activity android:name=".Export"></activity>
+    </application>
+
+</manifest>

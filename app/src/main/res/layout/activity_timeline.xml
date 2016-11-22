@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:itemBackground="@color/colorPrimaryDark"
-        app:itemIconTint="@color/colorDisabled"
-        app:itemTextColor="@color/colorDisabled"
+        app:itemIconTint="#ffffff"
+        app:itemTextColor="#ffffff"
         app:menu="@menu/three_item_bar" />
 
     <android.support.design.widget.FloatingActionButton
