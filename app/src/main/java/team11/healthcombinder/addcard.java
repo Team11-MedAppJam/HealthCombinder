@@ -39,6 +39,7 @@ public class addcard extends AppCompatActivity {
         EditText editDescription = (EditText) findViewById(R.id.descriptionForm);
         EditText editComment = (EditText) findViewById(R.id.commentsForm);
         new addCardTask().execute(editTitle.getText().toString(),editDescription.getText().toString(),editComment.getText().toString());
+        this.finish(); //close the current page
     }
 
     private class addCardTask extends AsyncTask<String, Void, String> {
