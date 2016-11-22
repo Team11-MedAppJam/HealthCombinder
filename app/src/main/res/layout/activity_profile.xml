@@ -13,7 +13,7 @@
     android:background="@color/colorPrimary">
 
     <TextView
-        android:text="@string/email"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView5"
@@ -29,7 +29,6 @@
         android:layout_toStartOf="@+id/editText" />
 
     <TextView
-        android:text="DoB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
@@ -42,7 +41,6 @@
         android:editable="false" />
 
     <TextView
-        android:text="User Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"

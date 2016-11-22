@@ -141,6 +141,12 @@
             android:focusable="false"
             />
 
+        <Button
+            android:text="Save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:onClick="saveButton" />
 
 
     </LinearLayout>

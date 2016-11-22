@@ -61,6 +61,10 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(this, Timeline.class);
         startActivity(intent);
     }
+    public void onResume() {
+        super.onResume();
+        new GetUserInfoTask().execute();
+    }
 
 
     private class GetUserInfoTask extends AsyncTask<String, Void, String> {
