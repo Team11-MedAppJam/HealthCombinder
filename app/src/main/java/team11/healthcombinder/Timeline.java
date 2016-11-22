@@ -95,7 +95,9 @@ public class Timeline extends AppCompatActivity {
                                 break;
 
                             case R.id.timeline_item:
-                                startActivity(new Intent(getApplicationContext(), Timeline.class));
+                                Intent timelineIntent = new Intent(getApplicationContext(), Timeline.class);
+                                timelineIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(timelineIntent);
                                 break;
 
                             case R.id.reminder_item:
@@ -229,26 +231,6 @@ public class Timeline extends AppCompatActivity {
                     Document doc = builder.parse(new InputSource(new StringReader(notecardXmlList.get(i))));
                     Element notecard = doc.getDocumentElement();
                     String id = notecard.getElementsByTagName("notecard_id").item(0).getTextContent();
-                    TextView symptomView = (TextView) findViewById(R.id.textView5);
-                    symptomView.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
-                    //TextView timeView = (TextView) findViewById(...);
-                    //timeView.setText(notecard.getElementsByTagName("time").item(0).getTextContent());
-                    //TextView descriptionView = (TextView) findViewById(R.id.info_text);
-                    //descriptionView.setText(notecardContentList.get(i));
-                    //timeView.setText
-
-                    break; //remove this line when multiple notecards
-
-//                    TextView symptomView = (TextView) findViewById(R.id.textView5);
-//                    symptomView.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
-                    //TextView timeView = (TextView) findViewById(...);
-                    //timeView.setText(notecard.getElementsByTagName("time").item(0).getTextContent());
-                    //TextView descriptionView = (TextView) findViewById(R.id.info_text);
-                    //descriptionView.setText(notecardContentList.get(i));
-                    //timeView.setText
-
-                    //break; //remove this line when multiple notecards
-
 
                 }
                 /////////////////////////////
