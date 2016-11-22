@@ -30,10 +30,12 @@ public class Reminder extends Timeline {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
-<<<<<<< HEAD
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // BOTTOM-BAR STUFFS:
+
+        bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,14 +56,12 @@ public class Reminder extends Timeline {
                         return false;
                     }
                 });
-=======
         if (getSupportActionBar()!= null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         Timeline t = new Timeline();
 
->>>>>>> origin/master
     }
 
     public void addReminder (View view){

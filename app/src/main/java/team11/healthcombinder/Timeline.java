@@ -48,7 +48,7 @@ public class Timeline extends AppCompatActivity {
     static {
         System.loadLibrary("native-lib");
     }
-    public BottomNavigationView bottomNavigationView;
+    protected BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +56,7 @@ public class Timeline extends AppCompatActivity {
         setContentView(R.layout.activity_timeline);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Timeline");
-<<<<<<< HEAD
-=======
 //        setSupportActionBar(toolbar);
->>>>>>> origin/master
         getSupportActionBar();
 
         BottomBar();
@@ -97,8 +94,6 @@ public class Timeline extends AppCompatActivity {
                             case R.id.profile_item:
                                 startActivity(new Intent(getApplicationContext(), Profile.class));
                                 break;
-<<<<<<< HEAD
-=======
 
                             case R.id.timeline_item:
                                 Intent timelineIntent = new Intent(getApplicationContext(), Timeline.class);
@@ -106,7 +101,6 @@ public class Timeline extends AppCompatActivity {
                                 startActivity(timelineIntent);
                                 break;
 
->>>>>>> origin/master
                             case R.id.reminder_item:
                                 startActivity(new Intent(getApplicationContext(), Reminder.class));
                                 break;
