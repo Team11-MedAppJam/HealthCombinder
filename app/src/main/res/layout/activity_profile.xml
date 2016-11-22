@@ -122,26 +122,13 @@
         android:layout_alignStart="@+id/change_password"
         android:onClick="openHistoryChecklist"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:focusable="false"
-        android:lines="@android:integer/config_mediumAnimTime"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_centerHorizontal="true"
-        android:inputType="none"
-        android:layout_below="@+id/textView2" />
-
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/edit_text"
-        android:layout_alignTop="@+id/editText"
-        android:layout_alignParentEnd="true"
         android:id="@+id/edit_email"
         android:background="@android:color/transparent"
-        android:layout_alignBottom="@+id/editText"
-        />
+        android:layout_above="@+id/change_password"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp" />
 </RelativeLayout>

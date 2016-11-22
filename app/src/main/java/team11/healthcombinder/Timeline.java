@@ -72,11 +72,11 @@ public class Timeline extends AppCompatActivity {
 //        TextView tv = (TextView) findViewById(R.id.sample_text);
         //       tv.setText(stringFromJNI());
 
-
-
-
-
-
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        new loadNotecardsTask().execute();
     }
 
     @Override
@@ -199,11 +199,14 @@ public class Timeline extends AppCompatActivity {
                 ///////////////////////////
 
                 //Converting dp to pixels
-                setContentView(R.layout.activity_timeline);
+//                setContentView(R.layout.activity_timeline);
                 Resources r = getResources();
                 int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, r.getDisplayMetrics());
                 int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 275, r.getDisplayMetrics());
                 int radius = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics());
+                LinearLayout timelineCards = (LinearLayout) findViewById(R.id.timeline_notecards);
+                timelineCards.removeAllViews();
+                Context mContext = getApplicationContext();
                 //Set ids, attach elements, then add to timeline
                 for(int i = 0; i < notecardXmlList.size(); i++){
                     Document doc = builder.parse(new InputSource(new StringReader(notecardXmlList.get(i))));
@@ -211,10 +214,7 @@ public class Timeline extends AppCompatActivity {
                     final String id = notecard.getElementsByTagName("notecard_id").item(0).getTextContent();
 
                     //Find timeline list
-                    LinearLayout timelineCards = (LinearLayout) findViewById(R.id.timeline_notecards);
-
                     //Declare objects to iterate on
-                    Context mContext = getApplicationContext();
                     CardView cardView = new CardView(mContext);
                     LinearLayout cardLinearLayout = new LinearLayout(mContext);
                     TextView cardHeader = new TextView(mContext);
@@ -236,11 +236,11 @@ public class Timeline extends AppCompatActivity {
                     });
 
                     //Set cardLinearLayout styles
-                    LinearLayout.LayoutParams cardLinearLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+//                    LinearLayout.LayoutParams cardLinearLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
                     cardLinearLayout.setOrientation(LinearLayout.VERTICAL);
 
                     //Set cardHeader styles
-                    FrameLayout.LayoutParams cardHeaderParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+//                    FrameLayout.LayoutParams cardHeaderParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
                     cardHeader.setHint("Test Title Card");
                     cardHeader.setText(notecard.getElementsByTagName("title").item(0).getTextContent());
 
